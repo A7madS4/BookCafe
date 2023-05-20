@@ -5,36 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">    
+    <title>Document</title>
 </head>
-<body style="font-family: 'Tajawal', sans-serif; background-image: linear-gradient(to right, #cbb279, #d7b481, #e2b78b, #ecba95, #f5bda0, #f3b69b, #f2ae97, #f0a794, #e59380, #d97f6d, #cd6b5b, #c0564a);">
+<body style="font-family: 'Tajawal', sans-serif; background-repeat: no-repeat; background-image: url('https://img.rawpixel.com/private/static/images/website/2022-05/px1025915-image-kwvwg6pp.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=9c16476104fbf31c8abffdd9d916feb6'); background-size: cover; width: 100vw;">
+<!-- /* background-image: linear-gradient(to right, #cbb279, #d7b481, #e2b78b, #ecba95, #f5bda0, #f3b69b, #f2ae97, #f0a794, #e59380, #d97f6d, #cd6b5b, #c0564a);  */ -->
+
     <!-- nav bar -->
     <!-- nav bar -->
     <!-- nav bar -->
     <!-- nav bar -->
     <!-- nav bar -->
-        <nav class="navbar navbar-expand-lg sticky-top" style="background: rgba(0, 0, 0, 0.25);"; height: 6vh">
+        <nav class="navbar navbar-expand-lg sticky-top" style="background: rgba(0, 0, 0, 0.25); background-image: url('https://cdn.dribbble.com/users/1936570/screenshots/15671618/media/8b5f68528a7089ad95e2cb9a98f3977f.gif'); height: 7vh">
             <div class="container-fluid">
-              <a class="navbar-brand text-white fs-1 me-5" href="#" style="font-family: 'Amiri', serif;">كنز الحكمة</a>
+              <a class="navbar-brand text-white fs-1 me-5 animate__animated animate__fadeInDown" href="#" style="font-family: 'Amiri', serif;">كنز الحكمة</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav nav-fill">
                   <li class="nav-item mx-5">
-                    <a class="nav-link text-white fs-4" href="#">الرئيسية</a>
+                    <a class="nav-link text-white fs-4 animate__animated animate__fadeInDown animate__delay-2s animate__faster" href="#">الرئيسية</a>
                   </li>
                   <li class="nav-item mx-5">
-                    <a class="nav-link text-white fs-4" href="#">البحث</a>
+                    <a class="nav-link text-white fs-4 animate__animated animate__fadeInDown animate__delay-3s animate__faster" href="#">البحث</a>
                   </li>
                   <li class="nav-item mx-5">
-                    <a class="nav-link text-white fs-4" href="#">التواصل</a>
+                    <a class="nav-link text-white fs-4 animate__animated animate__fadeInDown animate__delay-4s animate__faster" href="#">التواصل</a>
                   </li>
                   <li class="nav-item mx-5">
-                    <a class="nav-link text-white fs-4" href="#">من نحن</a>
+                    <a class="nav-link text-white fs-4 animate__animated animate__fadeInDown animate__delay-5s animate__faster" href="#">من نحن</a>
                   </li>
                 </ul>
               </div>
@@ -45,19 +49,89 @@
     <!-- search bar -->
     <!-- search bar -->
     <!-- search bar -->
-    <h1>البحث</h1>
-    <div class="card mx-2" style="width: 20%; background: rgba(0, 0, 0, 0.25);">
-        <div class="card-body">
-            <form>
-                <div class="input-group">
-                <!-- <input type="text" id="search" name="search">
-                <button type="submit" id="submit-btn">Search</button> -->
-                <input class="form-control ms-2 bg-light mx-1 " type="search" placeholder="أبحر في عالمٍ من العلم والمتعة" aria-label="Search" id="search" style="width: 80%;">
-                <button class="btn btn-outline-dark btn-light me-1" type="submit" id="sumit-btn">انطلق</button>
+    <h1 class="my-4" style="padding-right: 45%; font-size: 92px; font-family: 'Amiri', serif; width: 20%; margin-left: 0px;">البحث</h1>
+    <div id="search-options" class="row">
+        <!-- Start of search option card -->
+        <!-- Start of search option card -->
+        <div class="card me-3 ms-5 col" style="width: 20%; background: rgba(0, 0, 0, 0.25); ">
+            <div class="card-body">
+                <form>
+                  <div class="input-group">
+                    <!-- <input type="text" id="search" name="search">
+                    <button type="submit" id="submit-btn">Search</button> -->
+                    <input class="form-control ms-1 bg-light" type="search" placeholder="أبحر في عالمٍ من العلم والمتعة" aria-label="Search" id="search" style="width: 80%;">
+                 <button class="btn btn-outline-dark btn-light me-1" type="submit" id="sumit-btn">انطلق</button>
                 </div>
             </form>        
+            </div>
         </div>
-      </div>
+        <!-- End of search option -->
+        <!-- End of search option -->
+                <!-- Start of search option card -->
+        <!-- Start of search option card -->
+        <div class="card mx-3 col" style="width: 20%; background: rgba(0, 0, 0, 0.25); ">
+            <div class="card-body">
+                <div class="input-group">
+                    <label class="input-group-text" for="inputGroupSelect01" >الترتيب</label>
+                    <select class="form-select" id="inputGroupSelect01">
+                      <option selected disabled>اختر...</option>
+                      <option value="1">الترتيب حسب الشهرة</option>
+                      <option value="2">الترتيب حسب الحداثة</option>
+                    </select>
+                  </div>    
+            </div>
+        </div>
+        <!-- End of search option -->
+        <!-- End of search option -->
+                <!-- Start of search option card -->
+        <!-- Start of search option card -->
+        <div class="card mx-3 col" style="width: 20%; background: rgba(0, 0, 0, 0.25); ">
+            <div class="card-body">
+                <form>
+                  <div class="input-group">
+                    <!-- <input type="text" id="search" name="search">
+                    <button type="submit" id="submit-btn">Search</button> -->
+                    <input class="form-control ms-2 bg-light" type="search" placeholder="أبحر في عالمٍ من العلم والمتعة" aria-label="Search" id="search" style="width: 80%;">
+                 <button class="btn btn-outline-dark btn-light me-1" type="submit" id="sumit-btn">انطلق</button>
+                </div>
+            </form>        
+            </div>
+        </div>
+        <!-- End of search option -->
+        <!-- End of search option -->
+                <!-- Start of search option card -->
+        <!-- Start of search option card -->
+        <div class="card mx-3 col" style="width: 20%; background: rgba(0, 0, 0, 0.25); ">
+            <div class="card-body">
+                <form>
+                  <div class="input-group">
+                    <!-- <input type="text" id="search" name="search">
+                    <button type="submit" id="submit-btn">Search</button> -->
+                    <input class="form-control ms-2 bg-light" type="search" placeholder="أبحر في عالمٍ من العلم والمتعة" aria-label="Search" id="search" style="width: 80%;">
+                 <button class="btn btn-outline-dark btn-light me-1" type="submit" id="sumit-btn">انطلق</button>
+                </div>
+            </form>        
+            </div>
+        </div>
+        <!-- End of search option -->
+        <!-- End of search option -->
+                <!-- Start of search option card -->
+        <!-- Start of search option card -->
+        <div class="card ms-3 me-5 col" style="width: 20%; background: rgba(0, 0, 0, 0.25); ">
+            <div class="card-body">
+                <form>
+                  <div class="input-group">
+                    <!-- <input type="text" id="search" name="search">
+                    <button type="submit" id="submit-btn">Search</button> -->
+                    <input class="form-control ms-2 bg-light" type="search" placeholder="أبحر في عالمٍ من العلم والمتعة" aria-label="Search" id="search" style="width: 80%;">
+                 <button class="btn btn-outline-dark btn-light me-1" type="submit" id="sumit-btn">انطلق</button>
+                </div>
+            </form>        
+            </div>
+        </div>
+        <!-- End of search option -->
+        <!-- End of search option -->
+    </div>
 
     <div class="row mb-2 m-5" id="main"> <!--main div (not gonna be added)--> 
         </div>
@@ -65,7 +139,5 @@
     <script src="app.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-    
-</body>
+    </body>
 </html>

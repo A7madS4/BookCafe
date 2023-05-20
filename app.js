@@ -1,13 +1,15 @@
+const sorting = document.getElementById("inputGroupSelect01")
 const searchForm = document.querySelector('form');
     const searchInput = document.querySelector('#search');
     const mainDiv = document.querySelector('#main');
 
-    const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
+    let apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
 
     searchForm.addEventListener('submit', (event) => {
       event.preventDefault();
       const searchTerm = searchInput.value;
-      axios.get(apiUrl + searchTerm + "&maxResults=40")
+      if (sorting.value === '1') {
+        axios.get(apiUrl + searchTerm + "&maxResults=40" + "&orderBy=relevance")
         .then((response) => {
           const results = response.data.items;
           displayResults(results);
@@ -15,8 +17,33 @@ const searchForm = document.querySelector('form');
         .catch((error) => {
           console.log(error);
         });
+      }
+      else {
+        if (sorting.value === '2') {
+            axios.get(apiUrl + searchTerm + "&maxResults=40" + "&orderBy=newest")
+            .then((response) => {
+              const results = response.data.items;
+              displayResults(results);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+        else {
+            axios.get(apiUrl + searchTerm + "&maxResults=40")
+            .then((response) => {
+              const results = response.data.items;
+              displayResults(results);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+        }
+      }
 
-    });
+
+    );
 
     function displayResults(results) {
       console.log(results)
@@ -27,6 +54,7 @@ const searchForm = document.querySelector('form');
         const cardDiv = document.createElement('div');
         cardDiv.classList.add("row", "g-0", "border", "border-5" ,"border-dark" , "rounded", "overflow-hidden", "flex-md-row", "mb-4", "shadow-sm", "h-md-250", "position-relative");
         cardDiv.style.background = "rgba(0, 0, 0, 0.25)";
+        cardDiv.classList.add("animate__animated", "animate__bounceIn")
         const textDiv = document.createElement('div');
         textDiv.classList.add("col", "p-4", "d-flex", "flex-column", "position-static", "text-light");
         const titleH3 = document.createElement('h3');
@@ -41,6 +69,7 @@ const searchForm = document.querySelector('form');
         imageIMG.style.height = "192px"
         imageIMG.style.objectFit = "cover"
         const selflink = document.createElement("a");
+        selflink.classList.add("link-info")
         selflink.target="_blank"
         selflink.rel = "noopener noreferrer"
         // Direction chooser
@@ -112,10 +141,6 @@ const searchForm = document.querySelector('form');
         if (typeof result.volumeInfo.description === "string") {
         console.log(result.volumeInfo.description.length)
         }
-        // for (let step = 0; step < results.length; step++) {
-        //     // Runs 5 times, with values of step 0 through 4.
-        //     console.log(step);
-        //   }
       });
     }
 
