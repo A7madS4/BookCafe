@@ -1,0 +1,48 @@
+#neubar {
+    background-image: url('https://cdn.dribbble.com/users/1936570/screenshots/15671618/media/8b5f68528a7089ad95e2cb9a98f3977f.gif');
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.4)
+}
+
+.nav-item .active {
+    border-radius: 6px;
+    font-size: larger;
+    /* background: linear-gradient(145deg, rgba(201, 201, 201, 0.75), rgba(255, 255, 255, 1)); */
+    /* box-shadow:  4px 4px 8px #ddc1a0,
+                 -4px -4px 8px #f7e5cc; */
+}
+
+#neubar .dropdown-menu a:hover {
+    color: #454545
+}
+
+#neubar .nav-item {
+    margin: auto 4px;
+}
+
+#neubar a {
+    color: white;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 12px;
+}
+
+#neubar .dropdown-menu {
+    background: #545454
+}
+
+a.navbar-brand {
+    color: #454545
+}
+
+.centerh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.centerv {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+  }

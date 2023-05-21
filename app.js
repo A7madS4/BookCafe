@@ -1,4 +1,4 @@
-const sorting = document.getElementById("inputGroupSelect01")
+const sorting = document.getElementById("sorting")
 const searchForm = document.querySelector('form');
     const searchInput = document.querySelector('#search');
     const mainDiv = document.querySelector('#main');
