@@ -7,13 +7,14 @@ const searchForm = document.querySelector('form');
 
     mic.addEventListener('click', ()=>{
       let recognization = new webkitSpeechRecognition();
+      recognition.lang = "ar";
       recognization.onstart = () => {
 
      }
      recognization.onresult = (e) => {
       var transcript = e.results[0][0].transcript;
       var confidence = e.results[0][0].confidence;
-      window.alert(transcript)
+      searchInput.innerHTML = transcript
    }
    recognization.start();
     })
