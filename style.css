@@ -46,3 +46,7 @@ a.navbar-brand {
     align-content: center;
     flex-direction: column;
   }
+
+.input-group-text {
+    padding: 0px;
+}

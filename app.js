@@ -1,8 +1,22 @@
+const mic = document.getElementById("mic")
 const sorting = document.getElementById("sorting")
 const searchForm = document.querySelector('form');
     const searchInput = document.querySelector('#search');
     const mainDiv = document.querySelector('#main');
 
+
+    mic.addEventListener('click', ()=>{
+      let recognization = new webkitSpeechRecognition();
+      recognization.onstart = () => {
+
+     }
+     recognization.onresult = (e) => {
+      var transcript = e.results[0][0].transcript;
+      var confidence = e.results[0][0].confidence;
+      window.alert(transcript)
+   }
+   recognization.start();
+    })
     let apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
 
     searchForm.addEventListener('submit', (event) => {
