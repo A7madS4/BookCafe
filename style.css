@@ -45,8 +45,4 @@ a.navbar-brand {
     justify-content: center;
     align-content: center;
     flex-direction: column;
-  }
-
-.input-group-text {
-    padding: 0px;
 }
