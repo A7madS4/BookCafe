@@ -7,7 +7,7 @@ const searchForm = document.querySelector('form');
 
     mic.addEventListener('click', ()=>{
       let recognization = new webkitSpeechRecognition();
-      recognition.lang = "ar";
+      recognization.lang = "ar";
       recognization.onstart = () => {
 
      }
