@@ -1,13 +1,28 @@
-const mic = document.getElementById("mic")
-const sorting = document.getElementById("sorting")
+const mic = document.getElementById("mic");
+const sorting = document.getElementById("sorting");
 const searchForm = document.querySelector('form');
 const searchInput = document.querySelector('#search');
 const mainDiv = document.querySelector('#main');
+const micbtn = document.getElementById('micbtn');
+micbtn.addEventListener('click', () => {
+    let recog = new webkitSpeechRecognition();
+    recog.lang = document.getElementById('langopt').value
+    recog.onstart = () => {
+        micbtn.classList.add("btn-success");
+        micbtn.classList.remove("btn-danger");
+      };
+    recog.onresult = (event) => {
+        var transcript = event.results[0][0].transcript;
+        var confidence = event.results[0][0].confidence;
+        micbtn.classList.add("btn-danger");
+        micbtn.classList.remove("btn-success");
+        searchInput.value = transcript
+    }
+    recog.start()
 
-
-mic.addEventListener('click', () => {
-  window.alert("E!")
 })
+
+
 let apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
 
 searchForm.addEventListener('submit', (event) => {
@@ -57,7 +72,7 @@ function displayResults(results) {
     const resultDiv = document.createElement('div');
     resultDiv.classList.add("col-md-3");
     cardDiv = document.createElement('div');
-    cardDiv.classList.add("row", "g-0", "border", "border-5", "border-dark", "rounded", "overflow-hidden", "flex-md-row", "mb-4", "shadow-sm", "h-md-250", "position-relative",);
+    cardDiv.classList.add("row", "g-0", "border", "border-5", "border-dark", "rounded", "overflow-hidden", "flex-md-row", "mb-4", "shadow-sm", "h-md-250", "position-relative");
     cardDiv.style.background = "rgba(0, 0, 0, 0.25)";
     cardDiv.style.height = "192px"
     cardDiv.classList.add("animate__animated", "animate__bounceIn")
@@ -145,37 +160,7 @@ function displayResults(results) {
     cardDiv.appendChild(imageDiv)
     resultDiv.appendChild(cardDiv)
     mainDiv.appendChild(resultDiv)
-    if (typeof result.volumeInfo.description === "string") {
-      console.log(result.volumeInfo.description.length)
-    }
   });
 }
 
-    // axios.get("https://www.googleapis.com/books/v1/volumes?q=the")
-    // .then((response) => {
-    //     console.log(response)
-    // })
 
-    // axios.get("https://api.tvmaze.com/search/shows?q=the")
-    // .then((response) => {
-    //     console.log(response)
-    // })
-
-//     <div class="col-md-3"> <!--result div --> 
-//       <div class="row g-0 border rounded overflow-hidden
-//        flex-md-row mb-4 shadow-sm h-md-250 position-relative"> <!--card div --> 
-//         <div class="col p-4 d-flex flex-column position-static"> <!--text div --> 
-//           <h3 class="mb-0">مشاركة مميزة</h3> <!--title  --> 
-//           <!--desc -->  <p class="card-text mb-auto">هذه بطاقة أوسع مع نص داعم أدناه كمقدمة طبيعية لمحتوى إضافي.</p>
-//           <!-- <a href="" class="stretched-link">أكمل القراءة</a> -->
-//         </div>
-//         <div class="col-auto d-none d-lg-block"> <!--image div --> 
-//           <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: صورة مصغرة" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">صورة مصغرة</text></svg>
-//             <!--image div --> 
-//         </div>
-//       </div>
-// * <span class="collapsed">more...</span><span class="expanded">...less</span> *
-//     </div>
-//   </div>
-
-// كِتَابِيَّة
