@@ -78,7 +78,6 @@ function displayResults(results) {
     cardDiv.classList.add("animate__animated", "animate__bounceIn")
     const textDiv = document.createElement('div');
     textDiv.classList.add("col", "p-4", "d-flex", "flex-column", "position-static", "text-light");
-    textDiv.style.width = "67%"
     const titleH3 = document.createElement('h3');
     titleH3.classList.add("mb-0");
     titleH3.style.textOverflow = "fade"
@@ -86,7 +85,6 @@ function displayResults(results) {
     descP.classList.add("card-text", "mb-auto");
     const imageDiv = document.createElement('div');
     imageDiv.classList.add("col-auto", "d-none", "d-lg-block");
-    textDiv.style.width = "33%"
     const imageIMG = document.createElement('img');
     imageIMG.style.position = "relative"
     imageIMG.style.width = "128px"
