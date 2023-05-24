@@ -1,9 +1,11 @@
 const mic = document.getElementById("mic");
+const type = document.getElementById("type");
 const sorting = document.getElementById("sorting");
 const searchForm = document.querySelector('form');
 const searchInput = document.querySelector('#search');
 const mainDiv = document.querySelector('#main');
 const micbtn = document.getElementById('micbtn');
+const introDiv = document.getElementById("vid")
 micbtn.addEventListener('click', () => {
     let recog = new webkitSpeechRecognition();
     recog.lang = document.getElementById('langopt').value
@@ -24,12 +26,19 @@ micbtn.addEventListener('click', () => {
 
 
 let apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
-
+let typeFilter = type.value
+window.onload = () => {
+  setTimeout(() => {
+    introDiv.style.display = "none"
+  },"4900")
+}
 searchForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const searchTerm = searchInput.value;
+    let typeFilter = type.value;
+
   if (sorting.value === '1') {
-    axios.get(apiUrl + searchTerm + "&maxResults=40" + "&orderBy=relevance")
+    axios.get(apiUrl + searchTerm + typeFilter + "&maxResults=40" + "&orderBy=relevance")
       .then((response) => {
         const results = response.data.items;
         displayResults(results);
@@ -40,7 +49,7 @@ searchForm.addEventListener('submit', (event) => {
   }
   else {
     if (sorting.value === '2') {
-      axios.get(apiUrl + searchTerm + "&maxResults=40" + "&orderBy=newest")
+      axios.get(apiUrl + searchTerm + typeFilter + "&maxResults=40" + "&orderBy=newest")
         .then((response) => {
           const results = response.data.items;
           displayResults(results);
@@ -50,7 +59,7 @@ searchForm.addEventListener('submit', (event) => {
         });
     }
     else {
-      axios.get(apiUrl + searchTerm + "&maxResults=40")
+      axios.get(apiUrl + searchTerm + typeFilter + "&maxResults=40")
         .then((response) => {
           const results = response.data.items;
           displayResults(results);
@@ -77,14 +86,19 @@ function displayResults(results) {
     cardDiv.style.height = "192px"
     cardDiv.classList.add("animate__animated", "animate__bounceIn")
     const textDiv = document.createElement('div');
-    textDiv.classList.add("col", "p-4", "d-flex", "flex-column", "position-static", "text-light");
+    textDiv.classList.add("col", "p-4", "d-inline-flex", "flex-column", "position-static", "text-light", "mx-1");
+    textDiv.style.maxWidth = "57%"
     const titleH3 = document.createElement('h3');
-    titleH3.classList.add("mb-0");
+    titleH3.classList.add("mb-1");
     titleH3.style.textOverflow = "fade"
     const descP = document.createElement('p');
     descP.classList.add("card-text", "mb-auto");
     const imageDiv = document.createElement('div');
-    imageDiv.classList.add("col-auto", "d-none", "d-lg-block");
+    imageDiv.classList.add("col-auto");
+    imageDiv.style.position = "absolute"
+    imageDiv.style.top = "0"
+    imageDiv.style.left = "0"
+    imageDiv.style.width = "43%"
     const imageIMG = document.createElement('img');
     imageIMG.style.position = "relative"
     imageIMG.style.width = "128px"
@@ -162,5 +176,4 @@ function displayResults(results) {
     mainDiv.appendChild(resultDiv)
   });
 }
-
 
