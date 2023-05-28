@@ -81,34 +81,6 @@ background-image: url(https://images.unsplash.com/photo-1541138858526-9f296df156
       style="height: fit-content; border-radius: 10px; background-color: rgba(0,0,0, 0.50);">
       <form class="row gx-2 gy-2 py-3">
         <div class="col-sm-4">
-          <label class="visually-hidden" for="specificSizeInputName">Name</label>
-          <div class="input-group mb-1">
-            <span class="input-group-text bg-dark text-white" style="border: none;">البحث</span>
-
-            <input type="search" class="form-control" id="search" placeholder="ابدَأ الكِتابَة">
-
-            <div class="btn-group">
-              <!-- <span class="input-group-append"> -->
-                <button class="btn btn-danger" type="button"  id="micbtn"> 
-                  <i class="bi bi-mic m-0"></i></button>
-              <!-- </span> -->
-              <!-- <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
-                            data-bs-toggle="dropdown" aria-expanded="false" style="border-right-color: rgb(200, 0, 0);">
-                            <span class="visually-hidden">Toggle Dropdown</span>
-                        </button> -->
-              <select name="" id="langopt" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
-                style="border-right-color: rgb(200, 0, 0); text-align-last: center;">
-                <option value="ar"><a class="dropdown-item m-1" href="#" id="arLang">🇸🇦</a>
-                </option>
-                <option value="en"><a class="dropdown-item m-1" href="#" id="enLang">🇺🇸</a>
-                </option>
-              </select>
-            </div>
-
-
-          </div>
-        </div>
-        <div class="col-sm-4">
           <label class="visually-hidden" for="specificSizeSelect">Preference</label>
           <div class="input-group">
             <div class="input-group-text bg-dark outline-none text-white" style="border: none;">التصنيف</div>
@@ -171,7 +143,31 @@ background-image: url(https://images.unsplash.com/photo-1541138858526-9f296df156
           </div>
 
         </div>
+        <div class="col-sm-4">
+          <label class="visually-hidden" for="specificSizeInputName">Name</label>
+          <div class="input-group mb-1">
+            <span class="input-group-text bg-dark text-white" style="border: none;">البحث</span>
 
+            <input type="search" class="form-control" id="search" placeholder="ابدَأ الكِتابَة">
+
+            <div class="btn-group">
+              <span class="input-group-append">
+                <button class="btn btn-danger" type="button"  id="micbtn" style="border-radius: 0;"> 
+                  <i class="bi bi-mic m-0"></i></button>
+              </span>
+
+              <select name="" id="langopt" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                style="border-right-color: rgb(200, 0, 0); text-align-last: center;">
+                <option value="ar"><a class="dropdown-item m-1" href="#" id="arLang">🇸🇦</a>
+                </option>
+                <option value="en"><a class="dropdown-item m-1" href="#" id="enLang">🇺🇸</a>
+                </option>
+              </select>
+            </div>
+
+
+          </div>
+        </div>
         <div class="col-auto">
           <button type="submit" class="btn btn-dark" id="sumit-btn">انطلق الآن!</button>
         </div>

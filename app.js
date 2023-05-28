@@ -5,6 +5,10 @@ const searchForm = document.querySelector('form');
 const searchInput = document.querySelector('#search');
 const mainDiv = document.querySelector('#main');
 const micbtn = document.getElementById('micbtn');
+// const urlParams = new URLSearchParams(window.location.search);
+// const q = urlParams.get("q")
+// console.log(urlParams)
+// console.log(q)
 // const introDiv = document.getElementById("vid")
 micbtn.addEventListener('click', () => {
   let recog = new webkitSpeechRecognition();
@@ -89,12 +93,7 @@ function displayResults(results) {
     const titleH3 = document.createElement('h3');
     const descP = document.createElement('p');
     const detailLNK = document.createElement('a');
-    if (result.saleInfo.buyLink === undefined) {
-    detailLNK.href = "https://books.google.com.sa/books?id=" + result.id
-    }
-    else {
-      detailLNK.href = "https://play.google.com/store/books/details?id=" + result.id
-    }
+    detailLNK.href = "/view.html?q="+result.id
     detailLNK.target = "_blank"
     detailLNK.rel = "noopener noreferrer"
     const detailBTN = document.createElement('button');
