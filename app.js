@@ -5,37 +5,37 @@ const searchForm = document.querySelector('form');
 const searchInput = document.querySelector('#search');
 const mainDiv = document.querySelector('#main');
 const micbtn = document.getElementById('micbtn');
-const introDiv = document.getElementById("vid")
+// const introDiv = document.getElementById("vid")
 micbtn.addEventListener('click', () => {
-    let recog = new webkitSpeechRecognition();
-    recog.lang = document.getElementById('langopt').value
-    recog.onstart = () => {
-        micbtn.classList.add("btn-success");
-        micbtn.classList.remove("btn-danger");
-      };
-    recog.onresult = (event) => {
-        var transcript = event.results[0][0].transcript;
-        var confidence = event.results[0][0].confidence;
-        micbtn.classList.add("btn-danger");
-        micbtn.classList.remove("btn-success");
-        searchInput.value = transcript
-    }
-    recog.start()
+  let recog = new webkitSpeechRecognition();
+  recog.lang = document.getElementById('langopt').value
+  recog.onstart = () => {
+    micbtn.classList.add("btn-success");
+    micbtn.classList.remove("btn-danger");
+  };
+  recog.onresult = (event) => {
+    var transcript = event.results[0][0].transcript;
+    var confidence = event.results[0][0].confidence;
+    micbtn.classList.add("btn-danger");
+    micbtn.classList.remove("btn-success");
+    searchInput.value = transcript
+  }
+  recog.start()
 
 })
 
 
 let apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
 let typeFilter = type.value
-window.onload = () => {
-  setTimeout(() => {
-    introDiv.style.display = "none"
-  },"4900")
-}
+// window.onload = () => {
+//   setTimeout(() => {
+//     introDiv.style.display = "none"
+//   },"4900")
+// }
 searchForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const searchTerm = searchInput.value;
-    let typeFilter = type.value;
+  let typeFilter = type.value;
 
   if (sorting.value === '1') {
     axios.get(apiUrl + searchTerm + typeFilter + "&maxResults=40" + "&orderBy=relevance")
@@ -78,42 +78,32 @@ function displayResults(results) {
   console.log(results)
   mainDiv.innerHTML = '';
   results.forEach(result => {
-    const resultDiv = document.createElement('div');
-    resultDiv.classList.add("col-md-3");
     cardDiv = document.createElement('div');
-    cardDiv.classList.add("row", "g-0", "border", "border-5", "border-dark", "rounded", "overflow-hidden", "flex-md-row", "mb-4", "shadow-sm", "h-md-250", "position-relative");
-    cardDiv.style.background = "rgba(0, 0, 0, 0.25)";
-    cardDiv.style.height = "192px"
-    cardDiv.classList.add("animate__animated", "animate__bounceIn")
+    cardDiv.classList.add("carddd");
+    // cardDiv.classList.add("animate__animated", "animate__bounceIn")
+    const bodyDiv = document.createElement('div');
+    bodyDiv.classList.add("carddd-body");
     const textDiv = document.createElement('div');
-    textDiv.classList.add("col", "p-4", "d-inline-flex", "flex-column", "position-static", "text-light", "mx-1");
-    textDiv.style.maxWidth = "57%"
-    const titleH3 = document.createElement('h3');
-    titleH3.classList.add("mb-1");
-    titleH3.style.textOverflow = "fade"
-    const descP = document.createElement('p');
-    descP.classList.add("card-text", "mb-auto");
-    const imageDiv = document.createElement('div');
-    imageDiv.classList.add("col-auto");
-    imageDiv.style.position = "absolute"
-    imageDiv.style.top = "0"
-    imageDiv.style.left = "0"
-    imageDiv.style.width = "43%"
+    textDiv.classList.add("carddd-text")
     const imageIMG = document.createElement('img');
-    imageIMG.style.position = "relative"
-    imageIMG.style.width = "128px"
-    imageIMG.style.height = "192px"
-    imageIMG.style.objectFit = "cover"
-    const selflink = document.createElement("a");
-    selflink.classList.add("link-info")
-    selflink.target = "_blank"
-    selflink.rel = "noopener noreferrer"
-    // Direction chooser
-    if (result.volumeInfo.language === "ar") {
-      textDiv.style.direction = "rtl"
+    const titleH3 = document.createElement('h3');
+    const descP = document.createElement('p');
+    const detailLNK = document.createElement('a');
+    if (result.saleInfo.buyLink === undefined) {
+    detailLNK.href = "https://books.google.com.sa/books?id=" + result.id
     }
     else {
-      textDiv.style.direction = "ltr"
+      detailLNK.href = "https://play.google.com/store/books/details?id=" + result.id
+    }
+    detailLNK.target = "_blank"
+    detailLNK.rel = "noopener noreferrer"
+    const detailBTN = document.createElement('button');
+    // Direction chooser
+    if (result.volumeInfo.language === "ar") {
+      bodyDiv.style.direction = "rtl"
+    }
+    else {
+      bodyDiv.style.direction = "ltr"
     }
     // Title setting
     if (result.volumeInfo.title.length > 50) {
@@ -145,35 +135,25 @@ function displayResults(results) {
 
     }
     else {
-      selflink.href = result.volumeInfo.infoLink
-      if (result.volumeInfo.language === "ar") {
-        selflink.innerHTML = "قراءة المزيد"
-      }
-      else {
-        selflink.innerHTML = "Read more"
-      }
-      if (typeof result.volumeInfo.description === "string") {
-        if (result.volumeInfo.description.length > 100000) {
-          descP.innerHTML = result.volumeInfo.description.slice(0, 150) + "...";
-          descP.appendChild(selflink)
-        }
-        else {
-          descP.innerHTML = result.volumeInfo.description;
-          selflink.innerHTML = ""
-        }
-      }
+      descP.innerHTML = result.volumeInfo.description;
+    }
 
 
+    // Details button setting
+    if (result.volumeInfo.language === "ar") {
+      detailBTN.innerHTML = "قراءة المزيد"
+    }
+    else {
+      detailBTN.innerHTML = "Read more"
     }
     // Giving children to thier rightful parents
     textDiv.appendChild(titleH3)
     textDiv.appendChild(descP)
-    descP.appendChild(selflink)
-    imageDiv.appendChild(imageIMG)
-    cardDiv.appendChild(textDiv)
-    cardDiv.appendChild(imageDiv)
-    resultDiv.appendChild(cardDiv)
-    mainDiv.appendChild(resultDiv)
+    bodyDiv.appendChild(textDiv)
+    detailLNK.appendChild(detailBTN)
+    bodyDiv.appendChild(detailLNK)
+    cardDiv.appendChild(imageIMG)
+    cardDiv.appendChild(bodyDiv)
+    mainDiv.appendChild(cardDiv)
   });
 }
-
