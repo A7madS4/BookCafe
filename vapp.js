@@ -17,6 +17,7 @@ axios.get(selfLink)
     .then((response) => {
         console.log(response)
         bookCard.style.display = "flex"
+        bookCard.classList.add("animate__animated", "animate__slideInUp")
         const result = response.data
         const vol = result.volumeInfo
         title.innerHTML = vol.title
