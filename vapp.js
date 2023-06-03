@@ -8,7 +8,9 @@ const title = document.getElementById("title");
 const descP = document.getElementById("descP");
 const img = document.getElementById("img");
 const buy = document.getElementById("buy");
+const buyLNK = document.getElementById("buyLNK");
 const prev = document.getElementById("prev");
+const prevLNK = document.getElementById("prevLNK");
 const date = document.getElementById("date");
 const author = document.getElementById("author");
 const publer = document.getElementById("publer");
@@ -17,7 +19,6 @@ axios.get(selfLink)
     .then((response) => {
         console.log(response)
         bookCard.style.display = "flex"
-        bookCard.classList.add("animate__animated", "animate__slideInUp")
         const result = response.data
         const vol = result.volumeInfo
         title.innerHTML = vol.title
@@ -101,8 +102,46 @@ axios.get(selfLink)
                 pages.innerHTML = "Page count: " + vol.pageCount
             }
         }
-
-
+        // Button text setting
+        if (vol.language === "ar") {
+            buy.innerHTML = "شراء الكتاب"
+            prev.innerHTML = "الاطلاع على الكتاب"
+        }
+        else {
+            buy.innerHTML = "Buy book"
+            prev.innerHTML = "Preview book"
+        }
+        // Button redirect setting
+        // 
+        // Buy link
+        if (typeof result.saleInfo.buyLink === 'undefined') {
+            buy.disabled = true
+            if (vol.language === "ar") {
+                buy.innerHTML = "هذا الكتاب لا يباع"
+            }
+            else {
+                buy.innerHTML = "This book is not for sale"
+            }
+            buyLNK.removeAttribute("href")
+        }
+        else {
+            buyLNK.href = result.saleInfo.buyLink
+        }
+        // 
+        // Preview link
+        if (typeof vol.previewLink === 'undefined') {
+            prev.disabled = true
+            if (vol.language === "ar") {
+                prev.innerHTML = "لا يتوفر الاطلاع على الكتاب"
+            }
+            else {
+                prev.innerHTML = "No preview available"
+            }
+            prevLNK.removeAttribute("href")
+        }
+        else {
+            prevLNK.href = "https://books.google.com.sa/books?id="+ result.id +"&printsec=frontcover#v=onepage&q&f=false"
+        }
     })
     .catch((error) => {
         console.log(error);
