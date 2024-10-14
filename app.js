@@ -93,7 +93,7 @@ function displayResults(results) {
     const titleH3 = document.createElement('h3');
     const descP = document.createElement('p');
     const detailLNK = document.createElement('a');
-    detailLNK.href = "/BookCafe/view.html?q="+result.id
+    detailLNK.href = "https://a7mads4.github.io/BookCafe/view.html?q="+result.id
     detailLNK.target = "_blank"
     detailLNK.rel = "noopener noreferrer"
     const detailBTN = document.createElement('button');
